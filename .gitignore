@@ -1,0 +1,3 @@
+# .gitignore
+.env
+tempCodeRunnerFile.py  # Also ignore temporary files
