@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Domain Generator - Cap2Connect Web Solutions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <!-- Company Logo -->
+            <div class="company-branding">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Cap2Connect Web Solutions" class="company-logo">
+            </div>
+
+            <div class="header-content">
+                <h1><i class="fas fa-sparkles"></i> AI Domain Generator</h1>
+                <p>Find the perfect domain name for your business</p>
+            </div>
+
+            <!-- Main Input -->
+            <form id="ideaForm" class="main-form">
+                <div class="input-group">
+                    <input id="idea" type="text" placeholder="Describe your business idea... (e.g., coffee shop, online store, consulting...)" required>
+                    <button type="submit" id="generateBtn">
+                        <span class="btn-text">GENERATE</span>
+                        <i class="fas fa-spinner fa-spin loading-icon" style="display: none;"></i>
+                    </button>
+                </div>
+
+                <!-- Style Selector -->
+                <div class="style-filter">
+                    <label for="styleSelector">Style:</label>
+                    <select id="styleSelector">
+                        <option value="default">Default</option>
+                        <option value="moroccan">Moroccan</option>
+                        <option value="professional">Professional</option>
+                        <option value="funny">Funny</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Domain Extension Selector -->
+    <div class="extension-selector">
+        <div class="container">
+            <div class="selector-header">
+                <h3>Choose Domain Extensions</h3>
+                <div class="selector-controls">
+                    <button type="button" id="selectAll" class="control-btn">Select All</button>
+                    <button type="button" id="deselectAll" class="control-btn">Deselect All</button>
+                    <span id="selectedCount" class="count-badge">2 selected</span>
+                </div>
+            </div>
+
+            <div class="extensions-grid" id="extensionsGrid">
+                <div class="extension-item selected" data-ext="com" data-price="118">
+                    <input type="checkbox" checked>
+                    <div class="extension-content">
+                        <span>.com</span>
+                        <small>118 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item selected" data-ext="ma" data-price="120">
+                    <input type="checkbox" checked>
+                    <div class="extension-content">
+                        <span>.ma</span>
+                        <small>120 MAD/year</small>
+                    </div>
+                </div>
+
+                <div class="extension-item" data-ext="net" data-price="150">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.net</span>
+                        <small>150 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="org" data-price="150">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.org</span>
+                        <small>150 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="info" data-price="180">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.info</span>
+                        <small>180 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="me" data-price="200">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.me</span>
+                        <small>200 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="net.ma" data-price="140">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.net.ma</span>
+                        <small>140 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="co.ma" data-price="130">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.co.ma</span>
+                        <small>130 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="press.ma" data-price="160">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.press.ma</span>
+                        <small>160 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="org.ma" data-price="140">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.org.ma</span>
+                        <small>140 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="gov.ma" data-price="200">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.gov.ma</span>
+                        <small>200 MAD/year</small>
+                    </div>
+                </div>
+                <div class="extension-item" data-ext="ac.ma" data-price="180">
+                    <input type="checkbox">
+                    <div class="extension-content">
+                        <span>.ac.ma</span>
+                        <small>180 MAD/year</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results -->
+    <div class="results-section">
+        <div class="container">
+            <div id="resultsTitle" class="results-title" style="display: none;">
+                <h2><i class="fas fa-star"></i> Available Domains for Your Business</h2>
+                <p>Choose from our AI-generated domain suggestions and register instantly</p>
+            </div>
+
+
+            <div id="results" class="results-grid"></div>
+
+            <div id="emptyState" class="empty-state">
+                <i class="fas fa-sparkles"></i>
+                <h3>Ready to find your perfect domain?</h3>
+                <p>Enter your business description above and we'll generate available domain names you can register right now!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

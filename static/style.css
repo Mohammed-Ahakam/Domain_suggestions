@@ -1,0 +1,502 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(135deg, #f8f4ff 0%, #e8f4ff 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+  color: white;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.company-branding {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  z-index: 10;
+}
+
+.company-logo {
+  height: 40px;
+  width: auto;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.company-logo:hover {
+  opacity: 1;
+}
+
+.header-content {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.header p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Main Form */
+.main-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-group input {
+  flex: 1;
+  height: 3.5rem;
+  padding: 0 1rem;
+  font-size: 1.125rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.input-group input:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.input-group button {
+  height: 3.5rem;
+  padding: 0 2rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-group button:hover:not(:disabled) {
+  background: #059669;
+}
+
+.input-group button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Extension Selector */
+.extension-selector {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+}
+
+.selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.selector-header h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.selector-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.control-btn:hover {
+  border-color: #9ca3af;
+}
+
+.count-badge {
+  background: #8b5cf6;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.extensions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+/* IMPROVED: Extension item with proper checkbox positioning */
+.extension-item {
+  position: relative;
+  padding: 1rem;
+  padding-left: 2.5rem; /* Make space for checkbox */
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left; /* Align content to left */
+}
+
+.extension-item:hover {
+  border-color: #d1d5db;
+}
+
+.extension-item.selected {
+  border-color: #8b5cf6;
+  background: #f3f4f6;
+}
+
+/* Checkbox positioning */
+.extension-item input[type="checkbox"] {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  cursor: pointer;
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: #8b5cf6;
+}
+
+/* Extension content wrapper */
+.extension-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.extension-content span {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.extension-content small {
+  color: #6b7280;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+/* Results Section */
+.results-section {
+  padding: 2rem 0;
+}
+
+.results-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.results-title h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.results-title p {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.domain-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.domain-card:hover {
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+  transform: translateY(-1px);
+  border-color: #8b5cf6;
+}
+
+.domain-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.domain-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+  word-break: break-all;
+}
+
+.domain-status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-available {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-maybe {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.domain-alternatives {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.domain-pricing {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.domain-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.price-period {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.domain-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buy-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.buy-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.action-btn {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+}
+
+.action-btn:hover {
+  border-color: #8b5cf6;
+  background: linear-gradient(135deg, rgb(16, 185, 129) 0%, rgb(5, 150, 105) 100%);
+  transform: translateY(-1px);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #6b7280;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  color: #8b5cf6;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.empty-state p {
+  font-size: 1.125rem;
+}
+
+/* Loading state */
+.loading-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .company-branding {
+    position: static;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .company-logo {
+    height: 50px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .selector-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .extensions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .domain-pricing {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+/* 
+<!-- Updated positioning in header -->
+<div class="header">
+  <div class="container">
+    <!-- Company Logo -->
+    <div class="company-branding">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Cap2Connect Web Solutions" class="company-logo">
+    </div>
+
+    <div class="header-content">
+      <h1><i class="fas fa-sparkles"></i> AI Domain Generator</h1>
+      <p>Find the perfect domain name for your business</p>
+    </div>
+
+    <!-- Main Input -->
+    <form id="ideaForm" class="main-form">
+      <div class="input-group">
+        <input id="idea" type="text" placeholder="Describe your business idea... (e.g., coffee shop, online store, consulting...)" required>
+        <button type="submit" id="generateBtn">
+          <span class="btn-text">GENERATE</span>
+          <i class="fas fa-spinner fa-spin loading-icon" style="display: none;"></i>
+        </button>
+      </div>
+
+      <!-- Style Selector - Moved inside input-group for better alignment -->
+      <div class="style-filter">
+        <label for="styleSelector">Style:</label>
+        <select id="styleSelector">
+          <option value="default">Default</option>
+          <option value="moroccan">Moroccan</option>
+          <option value="professional">Professional</option>
+          <option value="funny">Funny</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div> */
